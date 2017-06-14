@@ -1,0 +1,52 @@
+<%= form_with(model: app_add, local: true) do |form| %>
+  <% if app_add.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(app_add.errors.count, "error") %> prohibited this app_add from being saved:</h2>
+
+      <ul>
+      <% app_add.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :app_id %>
+    <%= form.select :app_id, App.all.collect {|a| [ a.name, a.id ] } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :app_add_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ad_mob_id %>
+    <%= form.text_field :ad_mob_id, id: :app_add_ad_mob_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fb_id %>
+    <%= form.text_field :fb_id, id: :app_add_fb_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_shown %>
+    <%= form.check_box :is_shown, id: :app_add_is_shown %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_fb %>
+    <%= form.check_box :is_fb, id: :app_add_is_fb %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_ad_mob %>
+    <%= form.check_box :is_ad_mob, id: :app_add_is_ad_mob %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

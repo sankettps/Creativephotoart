@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>App:</strong>
+  <%= @app_add.app %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @app_add.name %>
+</p>
+
+<p>
+  <strong>Ad mob:</strong>
+  <%= @app_add.ad_mob_id %>
+</p>
+
+<p>
+  <strong>Fb:</strong>
+  <%= @app_add.fb_id %>
+</p>
+
+<p>
+  <strong>Is shown:</strong>
+  <%= @app_add.is_shown %>
+</p>
+
+<p>
+  <strong>Is fb:</strong>
+  <%= @app_add.is_fb %>
+</p>
+
+<p>
+  <strong>Is ad mob:</strong>
+  <%= @app_add.is_ad_mob %>
+</p>
+
+<%= link_to 'Edit', edit_app_add_path(@app_add) %> |
+<%= link_to 'Back', app_adds_path %>
