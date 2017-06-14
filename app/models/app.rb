@@ -1,3 +1,3 @@
 class App < ApplicationRecord
-	has_many :app_adds, dependent: :destroy
+	has_one :app_add, dependent: :destroy
 end

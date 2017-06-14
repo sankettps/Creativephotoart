@@ -61,6 +61,10 @@ class AppsController < ApplicationController
     end
   end
 
+  def app_by_name
+    @app = App.find_by_name(params[:app_name])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_app
