@@ -16,6 +16,13 @@
     <%= form.text_field :name, id: :app_name %>
   </div>
 
+  <div class="field">
+    <%= form.label :logo %>
+    <%= form.hidden_field(:logo_cache) %>
+
+    <%= form.file_field :logo, id: :app_logo %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
