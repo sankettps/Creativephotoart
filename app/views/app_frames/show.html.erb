@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>App:</strong>
+  <%= @app_frame.app %>
+</p>
+
+<p>
+  <strong>Frame:</strong>
+  <%= @app_frame.frame %>
+</p>
+
+<p>
+  <strong>Is visible:</strong>
+  <%= @app_frame.is_visible %>
+</p>
+
+<%= link_to 'Edit', edit_app_frame_path(@app_frame) %> |
+<%= link_to 'Back', app_frames_path %>

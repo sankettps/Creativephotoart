@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628161157) do
+ActiveRecord::Schema.define(version: 20170630155104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,24 @@ ActiveRecord::Schema.define(version: 20170628161157) do
     t.index ["app_id"], name: "index_app_adds_on_app_id"
   end
 
+  create_table "app_devices", force: :cascade do |t|
+    t.bigint "device_id"
+    t.bigint "app_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_app_devices_on_app_id"
+    t.index ["device_id"], name: "index_app_devices_on_device_id"
+  end
+
+  create_table "app_frames", force: :cascade do |t|
+    t.bigint "app_id"
+    t.string "frame"
+    t.boolean "is_visible", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_app_frames_on_app_id"
+  end
+
   create_table "apps", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -35,5 +53,14 @@ ActiveRecord::Schema.define(version: 20170628161157) do
     t.string "logo"
   end
 
+  create_table "devices", force: :cascade do |t|
+    t.string "device_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "app_adds", "apps"
+  add_foreign_key "app_devices", "apps"
+  add_foreign_key "app_devices", "devices"
+  add_foreign_key "app_frames", "apps"
 end

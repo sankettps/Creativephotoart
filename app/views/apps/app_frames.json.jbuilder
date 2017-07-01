@@ -1,2 +1,2 @@
 json.partial! "apps/app", app: @app
-json.app_adds @app.app_add
+json.app_frames @app.app_frames

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>App Frames</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>App</th>
+      <th>Frame</th>
+      <th>Is visible</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @app_frames.each do |app_frame| %>
+      <tr>
+        <td><%= app_frame.app.try(:name) %></td>
+        <td><%= image_tag(app_frame.frame.url,class: "img_thumb") %></td>
+        <td><%= app_frame.is_visible %></td>
+        <td><%= link_to 'Show', app_frame %></td>
+        <td><%= link_to 'Edit', edit_app_frame_path(app_frame) %></td>
+        <td><%= link_to 'Destroy', app_frame, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New App Frame', new_app_frame_path %>

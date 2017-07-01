@@ -1,0 +1,34 @@
+<%= form_with(model: app_frame, local: true) do |form| %>
+  <% if app_frame.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(app_frame.errors.count, "error") %> prohibited this app_frame from being saved:</h2>
+
+      <ul>
+      <% app_frame.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="field">
+    <%= form.label :app_id %>
+    <%= form.select :app_id, App.all.collect {|a| [ a.name, a.id ] } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :frame %>
+    <%= form.hidden_field(:frame_cache) %>
+
+    <%= form.file_field :frame, id: :app_frame_frame %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_visible %>
+    <%= form.check_box :is_visible, id: :app_frame_is_visible %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

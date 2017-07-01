@@ -61,8 +61,18 @@ class AppsController < ApplicationController
     end
   end
 
-  def app_by_name
+  def app_add_ids
     @app = App.find_by_name(params[:app_name])
+  end
+  
+  # https://creativephotoart.herokuapp.com/apps/app_by_name.json?app_name=Nature 
+  def app_frames
+    begin
+      @app = App.find_by_name(params[:app_name])
+      puts "<===cc==#{@app.inspect}=======>"
+    rescue => e
+      rendor json: {msg: "Error!"}
+    end
   end
 
   private

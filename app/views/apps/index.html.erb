@@ -14,7 +14,7 @@
     <% @apps.each do |app| %>
       <tr>
         <td><%= app.name %></td>
-        <td><%= image_tag(app.logo.url) %></td>
+        <td><%= image_tag(app.logo.url,class: "img_thumb") %></td>
         <td><%= link_to 'Show', app %></td>
         <td><%= link_to 'Edit', edit_app_path(app) %></td>
         <td><%= link_to 'Destroy', app, method: :delete, data: { confirm: 'Are you sure?' } %></td>
