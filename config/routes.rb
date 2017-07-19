@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: "home#home_page" 
   get "apps/app_add_ids"
   get "apps/app_frames"

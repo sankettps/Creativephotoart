@@ -1,6 +1,6 @@
 class AppAddsController < ApplicationController
   before_action :set_app_add, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /app_adds
   # GET /app_adds.json
   def index
