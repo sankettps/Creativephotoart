@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170701151414) do
+ActiveRecord::Schema.define(version: 20170719171303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ad_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "app_adds", force: :cascade do |t|
     t.bigint "app_id"
@@ -25,6 +31,8 @@ ActiveRecord::Schema.define(version: 20170701151414) do
     t.boolean "is_ad_mob", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "ad_type_id"
+    t.index ["ad_type_id"], name: "index_app_adds_on_ad_type_id"
     t.index ["app_id"], name: "index_app_adds_on_app_id"
   end
 
@@ -76,6 +84,7 @@ ActiveRecord::Schema.define(version: 20170701151414) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "app_adds", "ad_types"
   add_foreign_key "app_adds", "apps"
   add_foreign_key "app_devices", "apps"
   add_foreign_key "app_devices", "devices"

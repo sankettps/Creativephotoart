@@ -16,35 +16,31 @@
     <%= form.select :app_id, App.all.collect {|a| [ a.name, a.id ] } %>
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :app_add_name %>
-  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Ad Name</th>
+        <th>Ad Mob Id</th>
+        <th>Fb Id</th>
+        <th>Is Shown</th>
+        <th>Is Ad Mob</th>
+        <th>Is Fb</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% AdType.all.each do |ad_type| %>
+        <tr>
+          <td><%= ad_type.name %><input id="app_add_ad_mob_id" value="<%= ad_type.id %>" type="hidden" name="app_adds[][ad_type_id]"></td>
+          <td><input id="app_add_ad_mob_id" type="text" name="app_adds[][ad_mob_id]"></td>
+          <td><input id="app_add_fb_id" type="text" name="app_adds[][fb_id]"></td>
+          <td><input id="app_add_is_shown" type="checkbox" value="1" checked="checked" name="app_adds[][is_shown]"></td>
+          <td><input id="app_add_is_ad_mob" type="checkbox" value="1" name="app_adds[][is_ad_mob]"></td>
+          <td><input id="app_add_is_fb" type="checkbox" value="1" name="app_adds[][is_fb]"></td>
+        </tr>
+      <% end %>
 
-  <div class="field">
-    <%= form.label :ad_mob_id %>
-    <%= form.text_field :ad_mob_id, id: :app_add_ad_mob_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :fb_id %>
-    <%= form.text_field :fb_id, id: :app_add_fb_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_shown %>
-    <%= form.check_box :is_shown, id: :app_add_is_shown %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_fb %>
-    <%= form.check_box :is_fb, id: :app_add_is_fb %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_ad_mob %>
-    <%= form.check_box :is_ad_mob, id: :app_add_is_ad_mob %>
-  </div>
+    </tbody>
+  </table>
 
   <div class="actions">
     <%= form.submit %>

@@ -24,6 +24,7 @@ class AppAddsController < ApplicationController
   # POST /app_adds
   # POST /app_adds.json
   def create
+    exit
     @app_add = AppAdd.new(app_add_params)
 
     respond_to do |format|
